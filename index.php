@@ -31,5 +31,6 @@ Application::getInstance()
 	->checkConfig()
 	->registerAutoload($autoload)
 	->registerBootstrap(new Bootstrap())
+	->registerBootstrap(new \Bootstrap())
 	->bootstrap()
 	->run();
