@@ -1,6 +1,6 @@
 <?php
 /**
- * @description
+ * @description bootstrap when app is start
  *
  * @package
  *
@@ -11,13 +11,14 @@
  */
 use Kovey\Redis\Redis\Redis;
 use Kovey\Library\Config\Manager;
+use Kovey\Container\Event;
 
 class Bootstrap
 {
     public function __initEvents($app)
     {
         $app->getContainer()
-            ->on('Redis', function ($poolName) {
+            ->on('Redis', function (Event\Redis $event) {
                 $redis = new Redis(Manager::get('redis.write.0'));
                 $redis->connect();
                 return $redis;
